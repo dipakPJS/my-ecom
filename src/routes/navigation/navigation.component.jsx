@@ -23,7 +23,7 @@ const Navigation = () => {
             Home
           </NavLink>
           <NavLink
-            to="/sign-in"
+            to="/auth"
             style={({ isActive }) =>
               isActive ? { color: "red", fontSize: "20px" } : { color: "black" }
             }
