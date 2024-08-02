@@ -2,8 +2,18 @@ import { Outlet, NavLink } from "react-router-dom";
 import { Crown } from "../../assets/crown";
 
 import "./navigation.styles.scss";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/user.context";
+import { signOutUser } from "../../utils/firebase/firebase.utils";
 
 const Navigation = () => {
+  const { currentUser, setCurrentUser } = useContext(UserContext);
+
+  const signOutHandler = async () => {
+    await signOutUser();
+    setCurrentUser(null);
+  };
+
   return (
     <>
       <div className="navigation">
@@ -23,14 +33,30 @@ const Navigation = () => {
             Home
           </NavLink>
           <NavLink
-            to="/auth"
+            to="/shop"
             style={({ isActive }) =>
               isActive ? { color: "red", fontSize: "20px" } : { color: "black" }
             }
             className="nav-link"
           >
-            Sign In
+            Shop
           </NavLink>
+
+          {currentUser ? (
+            <span className="nav-link" onClick={signOutHandler}>
+              Sign Out
+            </span>
+          ) : (
+            <NavLink
+              to="/auth"
+              style={({ isActive }) =>
+                isActive ? { color: "red", fontSize: "20px" } : { color: "black" }
+              }
+              className="nav-link"
+            >
+              Sign In
+            </NavLink>
+          )}
         </div>
       </div>
       <Outlet />
