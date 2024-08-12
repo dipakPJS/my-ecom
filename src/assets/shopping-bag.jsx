@@ -1,6 +1,6 @@
 import React from "react";
 
-export const ShoppingIcon = () => {
+const ShoppingIcon = () => {
   return (
     <svg
       version="1.1"
@@ -51,3 +51,5 @@ export const ShoppingIcon = () => {
     </svg>
   );
 };
+
+export default ShoppingIcon;
