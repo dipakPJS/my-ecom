@@ -23,8 +23,6 @@ const SignUpForm = () => {
 
   const { displayName, email, password, confirmPassword } = formFields;
 
- 
-
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
